@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Конференции.РФ</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/">Конференции.РФ</a>
+            {% if session.user_id %}
+                <a href="/my_requests">Мои заявки</a>
+                <a href="/create_request">Создать заявку</a>
+                {% if session.is_admin %}
+                    <a href="/admin">Админ-панель</a>
+                {% endif %}
+                <a href="/logout">Выйти</a>
+            {% endif %}
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2027 Конференции.РФ</p>
+    </footer>
+</body>
+</html>

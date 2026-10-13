@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Мои заявки</h1>
+<div data-testid="req-list">
+    <table>
+        <tr><th>Помещение</th><th>Дата</th><th>Оплата</th><th>Статус</th><th>Отзыв</th></tr>
+        {% for r in requests %}
+        <tr>
+            <td>{{ r.room }}</td>
+            <td>{{ r.start_date }}</td>
+            <td>{{ r.payment }}</td>
+            <td>{{ r.status }}</td>
+            <td>
+                <form method="POST" action="/add_review/{{ r.id }}">
+                    <textarea name="review" data-testid="req-review">{{ r.review or '' }}</textarea>
+                    <button type="submit">Оставить отзыв</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Создание заявки</h1>
+<form method="POST" action="/create_request">
+    <label>Помещение
+        <input type="text" name="room" data-testid="req-room" required>
+    </label>
+    <label>Дата начала
+        <input type="text" name="start_date" data-testid="req-date" placeholder="ДД.ММ.ГГГГ" required>
+    </label>
+    <label>Способ оплаты
+        <select name="payment" data-testid="req-payment">
+            <option value="При очном посещении">При очном посещении</option>
+            <option value="Перевод по СБП">Перевод по СБП</option>
+        </select>
+    </label>
+    <button type="submit" data-testid="req-submit">Отправить</button>
+</form>
+{% endblock %}
